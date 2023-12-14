@@ -3,7 +3,7 @@
 This Github presents the code for the following paper: "Direct 3D Body Measurement Estimation from Sparse Landmarks" presented at VISAPP 2024.
 
 <p align="center">
-  <img src="https://github.com/DavidBoja/Landmarks2Anthropometry/blob/main/assets/main-image.png" width="950">
+  <img src="https://github.com/DavidBoja/Landmarks2Anthropometry/assets/main-image.png" width="950">
 </p>
 
 <b> TL;DR :</b> Estimate 11 body measurements from 73 body landmarks with the accuracy of SOA methods. 
