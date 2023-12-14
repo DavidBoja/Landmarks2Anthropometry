@@ -3,7 +3,7 @@
 This Github presents the code for the following paper: "Direct 3D Body Measurement Estimation from Sparse Landmarks" presented at VISAPP 2024.
 
 <p align="center">
-  <img src="https://github.com/DavidBoja/Landmarks2Anthropometry/blob/main/assets/main_image.png" width="950">
+  <img src="https://github.com/DavidBoja/Landmarks2Anthropometry/blob/main/assets/main_picture.png" width="950">
 </p>
 
 <b> TL;DR :</b> Estimate 11 body measurements from 73 body landmarks with the accuracy of SOA methods. 
@@ -116,6 +116,10 @@ LANDMARKS_ORDER = ['10th Rib Midspine',
                     'Suprasternale',
                     'Waist, Preferred, Post.']
 ```
+
+<p align="center">
+  <img src="https://github.com/DavidBoja/Landmarks2Anthropometry/blob/main/assets/landmarks_used.png" width="950">
+</p>
 
 The possible extensions of landmark_paths are:
 - `.txt` extension with each line "x y z landmark_name"
