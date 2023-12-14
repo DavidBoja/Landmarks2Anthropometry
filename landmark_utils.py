@@ -288,8 +288,9 @@ def load_landmarks(path: str):
     landmarks defined in  in LANDMARKS_ORDER.
 
     Landmark file is defined in the following format:
-    .txt extension with each line "x y z landmark_name"  (as in the CAESAR dataset)
+    .txt extension with each line "x y z landmark_name"
     .json extension with {landmark_name: [x,y,z]}
+    .lnd extension (as defined in CAESAR)
 
     
     :param path: (str) of path to landmark file
