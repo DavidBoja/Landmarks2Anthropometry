@@ -3,6 +3,8 @@ from typing import List
 import json
 import re
 import numpy as np
+from scipy.spatial.transform import Rotation as sciRot
+
 
 LANDMARKS_ORDER = ['10th Rib Midspine',
                     'Cervicale',
@@ -323,7 +325,7 @@ def load_landmarks(path: str):
 
     return landmarks
 
-def process_landmarks(landmarks, scale):
+def process_landmarks(landmarks, scale, normalize_viewpoint=False):
     """
     Models expect np.array of dim (1,216) which correspond to 72 landmarks (72*3=216)
     These are obtained by centering the 73 landmark coords on the NORMALIZING_LANDMARK
@@ -344,8 +346,16 @@ def process_landmarks(landmarks, scale):
         processed_landmarks[i,:] = landmarks[lm_name]
 
     processed_landmarks = processed_landmarks - processed_landmarks[NORMALIZING_LANDMARK_INDEX,:]
-    processed_landmarks = np.delete(processed_landmarks, NORMALIZING_LANDMARK_INDEX, axis=0)
-    processed_landmarks = processed_landmarks.reshape(1,-1)
-    processed_landmarks = processed_landmarks * scale
+    processed_landmarks = np.delete(processed_landmarks, NORMALIZING_LANDMARK_INDEX, axis=0) # (72,3)
+    processed_landmarks = processed_landmarks * scale # to mm
+
+    if normalize_viewpoint:
+        demo_lm = np.load("data/demo_landmarks_processed.npy") # (72,3) in mm
+
+        # align viewpoints
+        rot = sciRot.align_vectors(demo_lm, processed_landmarks)
+        processed_landmarks = rot[0].apply(processed_landmarks)
+
+    processed_landmarks = processed_landmarks.reshape(1,-1) # (1,216)
 
     return processed_landmarks

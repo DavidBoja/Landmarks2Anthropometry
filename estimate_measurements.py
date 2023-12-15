@@ -42,11 +42,15 @@ if __name__ == "__main__":
                         default=1,
                         help="Scale the landmarks into mm if necessary. \
                               Multiply scale with coordinates")
+    parser.add_argument("--normalize_viewpoint",
+                        action="store_true",
+                        help="Rotate the landmarks to have the same viewpoint \
+                              as the training data.")
     args = parser.parse_args()
 
 
     landmarks = load_landmarks(args.landmarks_path)
-    landmarks = process_landmarks(landmarks, args.scale)
+    landmarks = process_landmarks(landmarks, args.scale, args.normalize_viewpoint)
     model = load_model(args.sex)
     predicted_measurements = estimate_measurements(model, landmarks)
 
