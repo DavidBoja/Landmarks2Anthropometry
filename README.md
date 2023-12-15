@@ -26,12 +26,14 @@ pip install -r requirements.txt
 python estimate_measurements.py --landmarks_path <path-to-landmarks>
                                 --sex <subject-sex>
                                 --scale <scale-landmarks-to-unit>
+                                --normalize_viewpoint
 ```
 
 where
-- landmarks_path is the path to the landmarks file. See [Landmarks](#Landmarks) for possible file extensions.
-- sex is the subject sex: `male` or `female`. This decides the model to use.
-- scale is the unit of measurement to scale to, the landmark coordinates are multiplied with the scale
+- `--landmarks_path` is the path to the landmarks file. See [Landmarks](#Landmarks) for possible file extensions.
+- `--sex` is the subject sex: `male` or `female`. This decides the model to use.
+- `--scale` is the unit of measurement to scale to, the landmark coordinates are multiplied with the scale
+- `--normalize_viewpoint` is used to rotate the landmarks to have a similar viewpoint to the training data samples from CAESAR
 
 ⚠️ the landmarks need to be in millimeters. Check [here](#Scale) ⚠️ 
 
@@ -145,12 +147,19 @@ MEASUREMENTS_ORDER = ['Ankle Circumference (mm)',
 ```
 <br>
 
-## Scale
+## ⚖️ Scale
 
 The input landmarks need to be defined in millimeter scale. The scale parameter multiplies the landmarks with the scale as `landmarks * scale`.
 
 If you are unsure about the unit of the landmark coordinates, you can check the distance between landmark `Sellion` and `Lt. Calcaneous, Post.` (left heel). This should somewhat resemble to the height of the subject, from which you can infer the scale.
 
+
+<br>
+
+## ↗️ Viewpoint normalization
+
+The models are trained on the CAESAR dataset so the viewpoint of the subject landmarks should be similar to the ones in the CAESAR dataset. 
+To find the measurements from the landmarks from out-of-sample subjects (which can be in any position), we center the landmarks on the `Substernale` landmark and then minimize the landmark distances from the `data/demo_landmarks.json` landmarks, which has the same viewpoint as the examples from the CAESAR dataset.
 
 <br>
 
@@ -171,6 +180,7 @@ Since the `demo_landmarks.json` are defined in meters, we use a `scale` of 1000.
 - Landmarks need to be in millimeters
 - Measurements are in millimteres
 - Z-ax is the height of the person
+- Subject pose needs to be the A-pose
 - The model is trained on CAESAR dataset so the viewpoint of the subject landmarks should be similar to the ones in the CAESAR dataset
 
 <br>
@@ -200,7 +210,3 @@ If you use our work, please reference our paper:
    url={}
 }
 ```
-
-## TODO
-
-- [] Add the general viewpoint of the CAESAR examples in order to normalize out-of-sample landmarks
