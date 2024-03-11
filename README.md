@@ -202,18 +202,16 @@ names_test_female = data["names_test_female"]
 If you use our work, please reference our paper:
 
 ```
-@inproceedings{Bojanic-VISAPP24,
-  title     = "Direct {3D} Body Measurement Estimation from Sparse Landmarks",
-  booktitle = "Proceedings of the 19th International Joint Conference on
-               Computer Vision, Imaging and Computer Graphics Theory and
-               Applications",
-  author    = "Bojani{\'c}, D and Bartol, K and Petkovi{\'c}, T and
-               Pribani{\'c}, T",
-  publisher = "VISAPP",
-  volume    =  4,
-  pages     = "524--531",
-  year      =  2024
-  ISSN      = {2184-4321},
-  ISBN      = {978-989-758-679-8},
+@conference{Bojanic-VISAPP24,
+  author={David Bojani{\'c}. and Kristijan Bartol. and Tomislav Petkovi{\'c}. and Tomislav Pribani{\'c}.},
+  title={Direct 3D Body Measurement Estimation from Sparse Landmarks},
+  booktitle={Proceedings of the 19th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 4: VISAPP},
+  year={2024},
+  pages={524-531},
+  publisher={SciTePress},
+  organization={INSTICC},
+  doi={10.5220/0012384000003660},
+  isbn={978-989-758-679-8},
+  issn={2184-4321},
 }
 ```
