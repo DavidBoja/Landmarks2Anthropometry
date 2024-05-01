@@ -1,6 +1,6 @@
 # Direct 3D Body Measurement Estimation from Sparse Landmarks
 
-This Github presents the code for the following paper: "Direct 3D Body Measurement Estimation from Sparse Landmarks" presented at VISAPP 2024.
+This Github presents the code for the following paper: ["Direct 3D Body Measurement Estimation from Sparse Landmarks"](https://www.scitepress.org/publishedPapers/2024/123840/pdf/index.html) presented at VISAPP 2024.
 
 <p align="center">
   <img src="https://github.com/DavidBoja/Landmarks2Anthropometry/blob/main/assets/main_picture.png" width="950">
