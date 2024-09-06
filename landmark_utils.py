@@ -343,7 +343,8 @@ def process_landmarks(landmarks, scale, normalize_viewpoint=False):
 
     processed_landmarks = np.zeros((73,3)) 
     for i,lm_name in enumerate(LANDMARKS_ORDER):
-        processed_landmarks[i,:] = landmarks[lm_name]
+        if lm_name in landmarks:
+            processed_landmarks[i,:] = landmarks[lm_name]
 
     processed_landmarks = processed_landmarks - processed_landmarks[NORMALIZING_LANDMARK_INDEX,:]
     processed_landmarks = np.delete(processed_landmarks, NORMALIZING_LANDMARK_INDEX, axis=0) # (72,3)
